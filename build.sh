@@ -19,7 +19,6 @@ chmod 755 "$PKG_DIR/DEBIAN/postrm"
 
 # Ensure correct permissions on application files
 chmod 750 "$PKG_DIR/opt/vc-wifitracking/app.py"
-chmod 700 "$PKG_DIR/opt/vc-wifitracking/wifi_mode_manager.sh"
 
 # Create output directory
 mkdir -p "$OUTPUT_DIR"
