@@ -1,0 +1,12 @@
+Package: vc-wifitracker
+Version: 1.0.0
+Section: net
+Priority: optional
+Architecture: all
+Pre-Depends: debconf
+Depends: python3 (>= 3.7), tcpdump, iw
+Maintainer: VC Team <info@vc-wifitracker.local>
+Description: VC WiFi Tracking Service
+ Monitors nearby WiFi access points by capturing beacon frames
+ with tcpdump. Extracts BSSID, signal strength, channel, and
+ ESSID information. Runs as a systemd service.

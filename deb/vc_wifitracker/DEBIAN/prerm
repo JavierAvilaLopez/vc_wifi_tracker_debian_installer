@@ -5,8 +5,4 @@ if systemctl is-active --quiet vc-wifitracking.service; then
     systemctl stop vc-wifitracking.service
 fi
 
-if [ -x /opt/vc-wifitracking/wifi_mode_manager.sh ]; then
-    /opt/vc-wifitracking/wifi_mode_manager.sh post || true
-fi
-
 exit 0

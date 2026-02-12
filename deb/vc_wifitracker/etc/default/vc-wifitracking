@@ -1,0 +1,3 @@
+# WiFi interface for VC WiFi Tracking Service
+# Change this to match your wireless interface (e.g. wlan0, wlan1, wlp2s0)
+INTERFACE=wlan0

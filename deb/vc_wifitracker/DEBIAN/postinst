@@ -1,12 +1,17 @@
 #!/bin/bash
 set -e
 
+. /usr/share/debconf/confmodule
+
 chown -R vc-wifitracking:vc-wifitracking /opt/vc-wifitracking
-chown root:root /opt/vc-wifitracking/wifi_mode_manager.sh
 
 chmod 750 /opt/vc-wifitracking
 chmod 750 /opt/vc-wifitracking/app.py
-chmod 700 /opt/vc-wifitracking/wifi_mode_manager.sh
+
+# Write the selected interface to the config file
+db_get vc-wifitracker/interface
+INTERFACE="$RET"
+sed -i "s/^INTERFACE=.*/INTERFACE=${INTERFACE}/" /etc/default/vc-wifitracking
 
 systemctl daemon-reload
 systemctl enable vc-wifitracking.service

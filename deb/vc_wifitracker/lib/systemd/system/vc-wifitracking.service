@@ -7,8 +7,14 @@ Type=simple
 User=vc-wifitracking
 Group=vc-wifitracking
 WorkingDirectory=/opt/vc-wifitracking
-ExecStart=/usr/bin/python3 /opt/vc-wifitracking/app.py
-ExecStop=/opt/vc-wifitracking/wifi_mode_manager.sh post
+EnvironmentFile=/etc/default/vc-wifitracking
+ExecStartPre=/usr/sbin/ip link set ${INTERFACE} down
+ExecStartPre=/usr/sbin/iw dev ${INTERFACE} set type monitor
+ExecStartPre=/usr/sbin/ip link set ${INTERFACE} up
+ExecStart=/usr/bin/python3 /opt/vc-wifitracking/app.py ${INTERFACE}
+ExecStopPost=/usr/sbin/ip link set ${INTERFACE} down
+ExecStopPost=/usr/sbin/iw dev ${INTERFACE} set type managed
+ExecStopPost=/usr/sbin/ip link set ${INTERFACE} up
 
 NoNewPrivileges=true
 PrivateTmp=true
