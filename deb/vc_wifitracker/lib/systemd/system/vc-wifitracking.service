@@ -7,6 +7,7 @@ Type=simple
 User=vc-wifitracking
 Group=vc-wifitracking
 WorkingDirectory=/opt/vc-wifitracking
+ExecStartPre=/opt/vc-wifitracking/wifi_mode_manager.sh pre
 ExecStart=/usr/bin/python3 /opt/vc-wifitracking/app.py
 ExecStop=/opt/vc-wifitracking/wifi_mode_manager.sh post
 
