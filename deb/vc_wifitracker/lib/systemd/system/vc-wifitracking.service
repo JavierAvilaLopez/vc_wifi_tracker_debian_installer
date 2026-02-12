@@ -1,0 +1,27 @@
+[Unit]
+Description=VC WiFi Tracking Service
+After=network.target
+
+[Service]
+Type=simple
+User=vc-wifitracking
+Group=vc-wifitracking
+WorkingDirectory=/opt/vc-wifitracking
+ExecStart=/usr/bin/python3 /opt/vc-wifitracking/app.py
+ExecStop=/opt/vc-wifitracking/wifi_mode_manager.sh post
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

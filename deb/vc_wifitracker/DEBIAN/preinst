@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+if ! getent group vc-wifitracking >/dev/null; then
+    addgroup --system vc-wifitracking
+fi
+
+if ! id vc-wifitracking >/dev/null 2>&1; then
+    adduser --system \
+            --ingroup vc-wifitracking \
+            --home /opt/vc-wifitracking \
+            --shell /usr/sbin/nologin \
+            vc-wifitracking
+fi
+
+exit 0
