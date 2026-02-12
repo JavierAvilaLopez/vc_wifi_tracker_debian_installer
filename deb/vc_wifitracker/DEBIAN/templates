@@ -1,0 +1,6 @@
+Template: vc-wifitracker/interface
+Type: string
+Default: wlan0
+Description: WiFi interface for monitoring
+ Name of the wireless network interface to use for capturing
+ beacon frames (e.g. wlan0, wlan1, wlp2s0).
